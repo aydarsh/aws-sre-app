@@ -6,5 +6,17 @@ resource "aws_db_instance" "db" {
   instance_class    = "db.t2.micro"
   name              = "dbhello"
   username          = "rootuser"
-  password          = "rootpasswd"
+  password          = "${var.DBPASSWORD}"
+}
+
+resource "null_resource" "execute-sql" {
+  depends_on = [aws_db_instance.db, local_file.sql-statement]
+  provisioner "local-exec" {
+    command = "mysql --version"
+  }
+}
+
+resource "local_file" "sql-statement" {
+  content = file("../hello_world.sql")
+  filename          = "hello_world.sql"
 }
