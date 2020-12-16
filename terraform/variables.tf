@@ -1,0 +1,3 @@
+variable "DBPASSWORD" {
+  type = string
+}

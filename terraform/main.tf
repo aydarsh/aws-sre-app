@@ -6,7 +6,7 @@ resource "aws_db_instance" "db" {
   instance_class    = "db.t2.micro"
   name              = "dbhello"
   username          = "rootuser"
-  password          = "${var.DBPASSWORD}"
+  password          = var.DBPASSWORD
 }
 
 resource "null_resource" "execute-sql" {
@@ -17,6 +17,6 @@ resource "null_resource" "execute-sql" {
 }
 
 resource "local_file" "sql-statement" {
-  content = file("../hello_world.sql")
-  filename          = "hello_world.sql"
+  content  = file("../hello_world.sql")
+  filename = "hello_world.sql"
 }
