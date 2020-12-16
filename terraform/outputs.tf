@@ -1,3 +1,3 @@
-output "s3_endpoint" {
-  value = aws_s3_bucket.bucket.website_endpoint
+output "db_endpoint" {
+  value = aws_db_instance.db.endpoint
 }
