@@ -7,6 +7,8 @@ resource "aws_db_instance" "db" {
   name              = "dbhello"
   username          = "rootuser"
   password          = var.DBPASSWORD
+
+  skip_final_snapshot = true
 }
 
 resource "null_resource" "execute-sql" {
